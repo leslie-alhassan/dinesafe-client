@@ -1,0 +1,82 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.login {
+    @include row-flexer(space-between);
+    margin: 30vh 15rem;
+
+    &__about {
+        width: 25rem;
+
+        &__title {
+            font-size: $fs-header;
+            font-weight: 600;
+        }
+
+        &__content {
+            line-height: $lh-body;
+        }
+
+        &__quote {
+            font-style: italic;
+            font-size: $fs-subheader;
+            color: $prim-accent-clr-1;
+        }
+    }
+
+    &-wrapper {
+        @include col-flexer();
+    }
+
+    &__form {
+        @include col-flexer();
+        gap: 1rem;
+        width: 20rem;
+
+        &__input {
+            height: 2.5rem;
+            padding: 0 .5rem;
+            outline: none;
+            border: 0.0625rem solid $sec-accent-clr-2;
+            border-radius: .25rem;
+
+            &:focus {
+                border: 0.0625rem solid $prim-accent-clr-1;
+            }
+        }
+
+        &__button {
+            background-color: $prim-accent-clr-1;
+        }
+    }
+
+    &__link {
+        text-decoration: none;
+        color: $prim-accent-clr-1;
+        font-size: $fs-label;
+        text-align: center;
+        margin: $space-between-mob;
+    }
+
+    &__button {
+        background-color: #FF0095;
+        width: 100%;
+        // background-color: #1AE587;
+    }
+
+    .button {
+        height: 2.5rem;
+        cursor: pointer;
+        color: #fff;
+        border: none;
+        font-weight: bold;
+        font-size: 1rem;
+        border-radius: .25rem;
+    }
+
+    &__message {
+        border-left: 5px solid #ddd;
+        padding: 0.75rem;
+        margin-top: 2rem;
+    }
+}

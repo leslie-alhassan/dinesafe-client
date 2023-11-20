@@ -1,0 +1,39 @@
+@use './variables' as *;
+
+/* Media Queries */
+
+@mixin tablet {
+    @media screen and (min-width: $tablet-breakpoint) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width: $desktop-breakpoint) {
+        @content;
+    }
+}
+
+@mixin large-desktop {
+    @media screen and (min-width: $large-desktop-breakpoint) {
+        @content;
+    }
+}
+
+@mixin row-flexer($justify-content: flex-start) {
+    display: flex;
+    flex-direction: row;
+    justify-content: $justify-content;
+    align-items: center;
+}
+
+@mixin col-flexer($align-items: stretch) {
+    display: flex;
+    flex-direction: column;
+    align-items: $align-items;
+}
+
+/* Animations */
+
+
+/* Extends */

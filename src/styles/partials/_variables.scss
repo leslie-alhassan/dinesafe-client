@@ -1,0 +1,97 @@
+/* Breakpoints */
+$large-desktop-breakpoint: 1600px;
+$desktop-breakpoint: 1280px;
+$tablet-breakpoint: 768px;
+
+$content-max-width: 100rem; // 1600px
+
+/* Misc Colors */
+$input-error-clr: #D22D2D;
+
+/* Primary Colors */
+$primary-clr: #323232; // primary text
+$prim-accent-clr-1: #0095ff; // primary cta, active form field outline
+$prim-accent-clr-2: #afafaf; // secondary text, Text label
+$prim-accent-clr-3: #fff; // background, CTA text
+
+/* Secondary Colors */
+$secondary-clr: #000; // video player
+$sec-accent-clr-1: #0065ad; // cta hover 
+$sec-accent-clr-2: #e1e1e1; // divider, form field outline
+$sec-accent-clr-3: #fafafa; // from field background
+
+/* Misc */
+$border-radius: .25rem;
+$stroke-width: .0625rem;
+$divider: $stroke-width solid $sec-accent-clr-2;
+$thumbnail-width: 20rem;
+$thumbnail-img-width: 7rem;
+$thumbnail-img-height: 4rem;
+
+/* Font Families */
+$ff-primary: Rubik, sans-serif;
+$ff-body: $ff-primary;
+$ff-heading: $ff-primary;
+
+/* Desktop/Tablet Font Sizes */
+$fs-header: 2.0635rem;
+$fs-section-header: .75rem;
+$fs-subheader: .875rem;
+$fs-body: $fs-subheader;
+$fs-label: $fs-section-header;
+$fs-button: $fs-label;
+
+/* Mobile Font Sizes */
+$fs-header-mob: 1.5rem;
+$fs-section-header-mob: .75rem;
+$fs-subheader-mob: .8125rem;
+$fs-body-mob: $fs-subheader-mob;
+$fs-label-mob: .625rem;
+$fs-button-mob: $fs-label-mob;
+
+/* Desktop/Tablet Line Heights */
+$lh-header: 2.75rem;
+$lh-section-header: 1.25rem;
+$lh-subheader: 1.375rem;
+$lh-body: $lh-subheader;
+$lh-label: $lh-section-header;
+$lh-button: $lh-label;
+
+/* Mobile Line Heights */
+$lh-header-mob: 2rem;
+$lh-section-header-mob: 1.25rem;
+$lh-subheader-mob: 1.125rem;
+$lh-body-mob: $lh-subheader-mob;
+$lh-label-mob: $lh-section-header-mob;
+$lh-button-mob: $lh-label-mob;
+
+/* Desktop/Tablet Padding and Margins */
+$space-top: 2.25rem;
+$space-bottom: 1.5rem;
+$space-between: $space-bottom;
+$desktop-side-margins: 10rem;
+
+/* Desktop/Tablet Padding and Margins */
+$space-top-mob: 1.5rem;
+$space-bottom-mob: 1rem;
+$space-between-mob: $space-bottom-mob;
+
+/* Labels and Buttons */
+$btn-width: 10.625rem;
+$btn-height: 2.5rem;
+$btn-padding: 1rem;
+$btn-radius: $border-radius;
+
+/* Form Fields */
+$form-field-radius: $border-radius;
+$form-field-padding: 1rem;
+$form-field-padding-mob: .75rem;
+$form-field-border: .0625rem;
+
+/* Iconography and Logos */
+$logo-height: 1.5625rem;
+$logo-width: 7.5rem;
+
+/* Avatar */
+$avatar-size: 2.5rem;
+$avatar-size-mob: 2.25rem;

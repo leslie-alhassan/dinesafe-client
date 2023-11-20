@@ -1,0 +1,35 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.sign-up {
+    @include col-flexer;
+
+    &__form {
+        @include col-flexer;
+        gap: .5rem;
+        width: 20rem;
+
+        &__input {
+            height: 2.5rem;
+            padding: 0 .5rem;
+            outline: none;
+            border: 0.0625rem solid $sec-accent-clr-2;
+            border-radius: .25rem;
+
+            &:focus {
+                border: 0.0625rem solid $prim-accent-clr-1;
+            }
+        }
+
+        &__label {
+            font-weight: 500;
+            font-size: $fs-label;
+
+        }
+
+        &__button {
+            margin-top: 1rem;
+            background-color: $prim-accent-clr-1;
+        }
+    }
+}
