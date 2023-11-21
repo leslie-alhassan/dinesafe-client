@@ -7,7 +7,8 @@
     margin: 25vh 25vw;
 
     &__about {
-        width: 25rem;
+        height: 20rem;
+        // margin-top: -7%;
 
         &__title {
             font-size: $fs-header;
@@ -53,7 +54,7 @@
 
         &__button {
             margin-top: 1rem;
-            background-color: $prim-accent-clr-1;
+            background-color: $primary-clr;
             height: 2.5rem;
             cursor: pointer;
             color: #fff;

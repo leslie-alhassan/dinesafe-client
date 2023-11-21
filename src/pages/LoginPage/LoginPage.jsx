@@ -1,5 +1,5 @@
 import './LoginPage.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -67,7 +67,7 @@ const Login = () => {
           className='sign-up__link'
           to='/register'
         >
-          <button className='login__button button'>Sign Up</button>
+          {/* <button className='login__button button'>Sign Up</button> */}
         </Link>
       </div>
     </section>

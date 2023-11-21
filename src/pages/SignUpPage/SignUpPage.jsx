@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './SignUpPage.scss';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-import isEmail from 'validator/lib/isEmail';
 
 const SignUpPage = () => {
   document.title = 'DineSafe | Register';
@@ -19,11 +18,6 @@ const SignUpPage = () => {
 
   const handleSignUp = async (event) => {
     event.preventDefault();
-
-    if (email.length > 0 && !isEmail(email)) {
-      setError('Please provide a valid email address');
-      return;
-    }
 
     if (!(password === confirmPassword)) {
       setError(`Passwords don't match`);
@@ -130,7 +124,9 @@ const SignUpPage = () => {
           />
           {/* error handling */}
           {error && (
-            <div className='login__message login__message--error'>{error}</div>
+            <div className='sign-up__message sign-up__message--error'>
+              {error}
+            </div>
           )}
 
           {/* successful sign up */}

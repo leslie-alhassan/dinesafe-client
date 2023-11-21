@@ -4,10 +4,13 @@ import HomePage from './pages/HomePage/HomePage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import Header from './components/Header/Header';
 
 const App = () => {
   return (
     <BrowserRouter>
+      <Header />
+
       <Routes>
         <Route
           path='/'
