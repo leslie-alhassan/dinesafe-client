@@ -8,7 +8,6 @@
 
     &__about {
         height: 20rem;
-        // margin-top: -7%;
 
         &__title {
             font-size: $fs-header;
@@ -62,6 +61,12 @@
             font-weight: bold;
             font-size: 1rem;
             border-radius: .25rem;
+
+            &:hover {
+                background-color: #fff;
+                color: $primary-clr;
+                border: 0.0625rem solid $primary-clr;
+            }
         }
     }
 
@@ -78,6 +83,20 @@
         &__link {
             text-decoration: none;
             color: $prim-accent-clr-1;
+        }
+    }
+
+    &__login {
+        text-align: center;
+        margin-top: 2rem;
+
+        &__link {
+            text-decoration: none;
+            color: $prim-accent-clr-1;
+
+            &:hover {
+                color: $sec-accent-clr-1;
+            }
         }
     }
 }

@@ -1,0 +1,9 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.results {
+    &__matches {
+        font-weight: 600;
+        color: $prim-accent-clr-1;
+    }
+}

@@ -25,7 +25,36 @@
         }
 
         &__button {
+            height: 2.5rem;
+            cursor: pointer;
+            color: #fff;
+            border: none;
+            font-weight: bold;
+            font-size: 1rem;
+            border-radius: .25rem;
             background-color: $prim-accent-clr-1;
+
+            &:hover:not(.login__form__button--sign-up) {
+                background-color: $sec-accent-clr-1;
+            }
+
+            &--sign-up {
+                background-color: $primary-clr;
+                width: 20rem;
+
+                &:hover {
+                    background-color: #fff;
+                    color: $primary-clr;
+                    border: 0.0625rem solid $primary-clr;
+                }
+            }
+        }
+
+        &__message {
+            font-size: $fs-subheader;
+            border-left: 5px solid #FF0095;
+            padding: 0.75rem;
+            margin-top: $space-between-mob;
         }
     }
 
@@ -35,28 +64,9 @@
         font-size: $fs-label;
         text-align: center;
         margin: $space-between-mob;
-    }
 
-    &__button {
-        background-color: #FF0095;
-        width: 20rem;
-        // background-color: #1AE587;
-    }
-
-    .button {
-        height: 2.5rem;
-        cursor: pointer;
-        color: #fff;
-        border: none;
-        font-weight: bold;
-        font-size: 1rem;
-        border-radius: .25rem;
-    }
-
-    &__message {
-        font-size: $fs-subheader;
-        border-left: 5px solid #FF0095;
-        padding: 0.75rem;
-        margin-top: $space-between-mob;
+        &:hover {
+            color: $sec-accent-clr-1;
+        }
     }
 }

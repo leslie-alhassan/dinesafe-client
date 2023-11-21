@@ -1,13 +1,13 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/mixins' as *;
 
-
 .header {
     width: 80vw;
     margin: 2rem auto;
     @include row-flexer(space-between);
 
     &__link {
+        cursor: pointer;
         text-decoration: none;
         color: $primary-clr;
         font-size: 1.5rem;
@@ -22,8 +22,10 @@
         border: 0.0625rem solid $sec-accent-clr-2;
         border-radius: .25rem;
 
+
         &:focus {
             border: 0.0625rem solid $prim-accent-clr-1;
+            // box-shadow: 0 0 .1rem $prim-accent-clr-1;
         }
     }
 
@@ -48,10 +50,21 @@
 
         &--login {
             background-color: $prim-accent-clr-1;
+
+            &:hover {
+                background-color: $sec-accent-clr-1;
+            }
         }
 
         &--register {
             background-color: $primary-clr;
+            border: 0.0625rem solid $primary-clr;
+
+            &:hover {
+                background-color: #fff;
+                color: $primary-clr;
+                border: 0.0625rem solid $primary-clr;
+            }
         }
     }
 }

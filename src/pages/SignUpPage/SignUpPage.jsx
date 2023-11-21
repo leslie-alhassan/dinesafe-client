@@ -143,6 +143,16 @@ const SignUpPage = () => {
           )}
           <button className='sign-up__form__button button'>Sign Up</button>
         </form>
+
+        <p className='sign-up__login'>
+          Already have an account?{' '}
+          <Link
+            to='/login'
+            className='sign-up__login__link'
+          >
+            Log in
+          </Link>
+        </p>
       </div>
     </section>
   );

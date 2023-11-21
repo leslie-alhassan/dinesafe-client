@@ -54,8 +54,10 @@ const Login = () => {
             className='login__form__input'
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className='login__form__button button'>Login</button>
-          {error && <div className='login__message'>{error}</div>}
+
+          {/* login */}
+          <button className='login__form__button'>Login</button>
+          {error && <div className='login__form__message'>{error}</div>}
         </form>
         <Link
           to='/'
@@ -63,11 +65,15 @@ const Login = () => {
         >
           Continue without logging in
         </Link>
+
+        {/* registration */}
         <Link
           className='sign-up__link'
           to='/register'
         >
-          {/* <button className='login__button button'>Sign Up</button> */}
+          <button className='login__form__button login__form__button--sign-up'>
+            Sign Up
+          </button>
         </Link>
       </div>
     </section>

@@ -1,51 +1,60 @@
 import './Header.scss';
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Header = () => {
+const Header = ({ user, onSetSearchResults }) => {
   const navigate = useNavigate();
-
-  const [user, setUser] = useState(null);
+  const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
-    const token = sessionStorage.getItem('token');
+    const handleSearch = async (searchInput) => {
+      if (searchInput.length === 0) {
+        return;
+      }
 
-    if (!token) {
-      return;
-    } else {
-      navigate('/');
-    }
+      try {
+        const { data } = await axios.get(
+          `${
+            import.meta.env.VITE_SERVER_URL
+          }/api/establishments?search=${searchInput}`
+        );
+        onSetSearchResults(data);
+      } catch (err) {
+        console.log('Unable to search for results', err);
+      }
+    };
+    handleSearch(searchInput);
+  }, [searchInput]);
 
-    // get current user
-    axios
-      .get(`${import.meta.env.VITE_SERVER_URL}/api/users/profile`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then(({ data }) => {
-        setUser(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  const handleRedirect = () => {
+    navigate('/');
+    window.location.reload();
+  };
 
   return (
     <header className='header'>
-      <Link
+      {/* <Link
         to='/'
         className='header__link'
       >
         dinesafe
-      </Link>
+      </Link> */}
+
+      <h1
+        className='header__link'
+        onClick={handleRedirect}
+      >
+        dinesafe
+      </h1>
       {/* search bar */}
+
       <input
         type='search'
+        name='search'
         placeholder={user ? 'Search' : 'Try searching to get started'}
         className='header__input'
+        onChange={(e) => setSearchInput(e.target.value)}
       />
 
       {!user ? (
