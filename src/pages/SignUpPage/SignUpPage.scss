@@ -2,7 +2,28 @@
 @use '../../styles/partials/variables' as *;
 
 .sign-up {
-    @include col-flexer;
+    @include row-flexer();
+    gap: 8rem;
+    margin: 25vh 25vw;
+
+    &__about {
+        width: 25rem;
+
+        &__title {
+            font-size: $fs-header;
+            font-weight: 600;
+        }
+
+        &__content {
+            line-height: $lh-body;
+        }
+
+        &__quote {
+            font-style: italic;
+            font-size: $fs-subheader;
+            color: $prim-accent-clr-1;
+        }
+    }
 
     &__form {
         @include col-flexer;
@@ -23,13 +44,39 @@
 
         &__label {
             font-weight: 500;
-            font-size: $fs-label;
+            font-size: $fs-subheader;
 
+            sup {
+                color: #FF0095;
+            }
         }
 
         &__button {
             margin-top: 1rem;
             background-color: $prim-accent-clr-1;
+            height: 2.5rem;
+            cursor: pointer;
+            color: #fff;
+            border: none;
+            font-weight: bold;
+            font-size: 1rem;
+            border-radius: .25rem;
+        }
+    }
+
+    &__message {
+        font-size: $fs-subheader;
+        border-left: 5px solid $prim-accent-clr-1;
+        padding: 0.75rem;
+        margin-top: $space-between-mob;
+
+        &--error {
+            border-left: 5px solid #FF0095;
+        }
+
+        &__link {
+            text-decoration: none;
+            color: $prim-accent-clr-1;
         }
     }
 }

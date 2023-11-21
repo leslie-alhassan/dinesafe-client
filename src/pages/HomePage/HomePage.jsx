@@ -1,4 +1,5 @@
 import './HomePage.scss';
+import LoadingPage from '../LoadingPage/LoadingPage';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -30,18 +31,20 @@ const HomePage = () => {
       });
   }, []);
 
-  // * if we're unable to authenticate the user, we should still allow them to use
+  // * if we're unable to authenticate the user, we should still allow them to use site with restricted access
   if (failedAuth) {
     return (
       <main>
-        Welcome! Please <Link to='/login'>log in</Link> to view this page.
+        <h1>
+          Welcome. Please <Link to='/login'>login</Link> for full access
+        </h1>
       </main>
     );
   }
 
   return !user ? (
     <main>
-      <h1>Loading... </h1>
+      <LoadingPage />
     </main>
   ) : (
     <main>

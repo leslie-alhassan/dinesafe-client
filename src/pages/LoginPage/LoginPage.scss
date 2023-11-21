@@ -2,30 +2,11 @@
 @use '../../styles/partials/variables' as *;
 
 .login {
-    @include row-flexer(space-between);
-    margin: 30vh 15rem;
 
-    &__about {
-        width: 25rem;
-
-        &__title {
-            font-size: $fs-header;
-            font-weight: 600;
-        }
-
-        &__content {
-            line-height: $lh-body;
-        }
-
-        &__quote {
-            font-style: italic;
-            font-size: $fs-subheader;
-            color: $prim-accent-clr-1;
-        }
-    }
-
+    // @include col-flexer();
     &-wrapper {
-        @include col-flexer();
+        @include col-flexer(center);
+        margin: 30vh 0;
     }
 
     &__form {
@@ -60,7 +41,7 @@
 
     &__button {
         background-color: #FF0095;
-        width: 100%;
+        width: 20rem;
         // background-color: #1AE587;
     }
 
@@ -75,8 +56,9 @@
     }
 
     &__message {
-        border-left: 5px solid #ddd;
+        font-size: $fs-subheader;
+        border-left: 5px solid #FF0095;
         padding: 0.75rem;
-        margin-top: 2rem;
+        margin-top: $space-between-mob;
     }
 }

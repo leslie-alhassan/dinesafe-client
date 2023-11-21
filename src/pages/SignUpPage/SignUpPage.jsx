@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './SignUpPage.scss';
-import { useNavigate } from 'react-router-dom';
-import validator from 'validator';
+import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
+import isEmail from 'validator/lib/isEmail';
 
 const SignUpPage = () => {
   document.title = 'DineSafe | Register';
-  const navigate = useNavigate();
 
   // form values
   const [email, setEmail] = useState('');
@@ -14,49 +14,56 @@ const SignUpPage = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   // validation
-  const [error, setError] = useState(false);
+  const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
 
   const handleSignUp = async (event) => {
     event.preventDefault();
 
-    if (!password === confirmPassword) {
-      return setError('Passwords do not match');
+    if (email.length > 0 && !isEmail(email)) {
+      setError('Please provide a valid email address');
+      return;
+    }
+
+    if (!(password === confirmPassword)) {
+      setError(`Passwords don't match`);
+      return;
     }
 
     try {
-      await axios.post(`${import.meta.en.VITE_SERVER_URL}/api/users/register`, {
-        email: email,
-        username: username,
-        password: password,
-      });
+      await axios.post(
+        `${import.meta.env.VITE_SERVER_URL}/api/users/register`,
+        {
+          email: email,
+          username: username,
+          password: password,
+        }
+      );
 
       setError('');
       setSuccess(true);
-      navigate('/');
     } catch (err) {
       console.log({ message: err.message, error: err.response.data });
       setError(err.response.data);
-      setError(true);
       setSuccess(false);
     }
   };
 
   return (
-    <section className='login'>
-      <article className='login__about'>
-        <h1 className='login__about__title'>DineSafe</h1>
+    <section className='sign-up'>
+      <article className='sign-up__about'>
+        <h1 className='sign-up__about__title'>DineSafe</h1>
 
-        <p className='login__about__content'>
+        <p className='sign-up__about__content'>
           DineSafe is Toronto Public Health’s food safety program that inspects
           all establishments serving and preparing food. Each inspection results
           in a pass, a conditional pass or a closed notice.
         </p>
 
-        <p className='login__about__quote'>- City of Toronto Open Data</p>
+        <p className='sign-up__about__quote'>- City of Toronto Open Data</p>
       </article>
 
-      <div className='sign-up'>
+      <div className='sign-up-wrapper'>
         {/* sign-up form */}
         <form
           className='sign-up__form'
@@ -67,10 +74,10 @@ const SignUpPage = () => {
             htmlFor='email'
             className='sign-up__form__label'
           >
-            Email
+            Email <sup>*</sup>
           </label>
           <input
-            type='email'
+            type='text'
             id='email'
             className='sign-up__form__input'
             placeholder='Email'
@@ -82,7 +89,7 @@ const SignUpPage = () => {
             htmlFor='username'
             className='sign-up__form__label'
           >
-            Username
+            Username <sup>*</sup>
           </label>
           <input
             type='username'
@@ -97,7 +104,7 @@ const SignUpPage = () => {
             htmlFor='password'
             className='sign-up__form__label'
           >
-            Password
+            Password <sup>*</sup>
           </label>
           <input
             type='password'
@@ -112,7 +119,7 @@ const SignUpPage = () => {
             htmlFor='confirmPassword'
             className='sign-up__form__label'
           >
-            Confirm password
+            Confirm password <sup>*</sup>
           </label>
           <input
             type='password'
@@ -121,6 +128,23 @@ const SignUpPage = () => {
             placeholder='Confirm password'
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
+          {/* error handling */}
+          {error && (
+            <div className='login__message login__message--error'>{error}</div>
+          )}
+
+          {/* successful sign up */}
+          {success && (
+            <div className='sign-up__message'>
+              Signed up!{' '}
+              <Link
+                to='/login'
+                className='sign-up__message__link'
+              >
+                Log in
+              </Link>
+            </div>
+          )}
           <button className='sign-up__form__button button'>Sign Up</button>
         </form>
       </div>

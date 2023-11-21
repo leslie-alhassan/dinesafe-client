@@ -33,20 +33,7 @@ const Login = () => {
 
   return (
     <section className='login'>
-      <article className='login__about'>
-        <h1 className='login__about__title'>DineSafe</h1>
-
-        <p className='login__about__content'>
-          DineSafe is Toronto Public Health’s food safety program that inspects
-          all establishments serving and preparing food. Each inspection results
-          in a pass, a conditional pass or a closed notice.
-        </p>
-
-        <p className='login__about__quote'>- City of Toronto Open Data</p>
-      </article>
-
       <div className='login-wrapper'>
-        {/* login form */}
         <form
           onSubmit={handleLogin}
           className='login__form'
@@ -68,7 +55,6 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button className='login__form__button button'>Login</button>
-
           {error && <div className='login__message'>{error}</div>}
         </form>
         <Link
@@ -77,7 +63,6 @@ const Login = () => {
         >
           Continue without logging in
         </Link>
-
         <Link
           className='sign-up__link'
           to='/register'
