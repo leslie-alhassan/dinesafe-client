@@ -1,0 +1,57 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+
+.header {
+    width: 80vw;
+    margin: 2rem auto;
+    @include row-flexer(space-between);
+
+    &__link {
+        text-decoration: none;
+        color: $primary-clr;
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+
+    &__input {
+        height: 2.5rem;
+        width: 50%;
+        padding: 0 .5rem;
+        outline: none;
+        border: 0.0625rem solid $sec-accent-clr-2;
+        border-radius: .25rem;
+
+        &:focus {
+            border: 0.0625rem solid $prim-accent-clr-1;
+        }
+    }
+
+    &__buttons {
+        @include row-flexer();
+        gap: 1rem;
+
+        .or {
+            font-weight: 800;
+        }
+    }
+
+    &__button {
+        height: 2.5rem;
+        padding: 0 2rem;
+        cursor: pointer;
+        color: #fff;
+        border: none;
+        font-weight: bold;
+        font-size: 1rem;
+        border-radius: .25rem;
+
+        &--login {
+            background-color: $prim-accent-clr-1;
+        }
+
+        &--register {
+            background-color: $primary-clr;
+        }
+    }
+}
