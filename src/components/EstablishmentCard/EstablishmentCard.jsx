@@ -1,12 +1,26 @@
+import './EstablishmentCard.scss';
 import React from 'react';
 
-const EstablishmentCard = ({ establishment }) => {
+const EstablishmentCard = ({ establishment, onHandleCardClick }) => {
+  const status = establishment.status.split(' ').join('-').toLowerCase();
+
   return (
-    <div key={establishment.id}>
-      <p>{establishment.name}</p>
-      <p>{establishment.address}</p>
-      <p>{establishment.status}</p>
-    </div>
+    <article
+      onClick={() => {
+        onHandleCardClick(establishment);
+      }}
+      className={`establishment-card establishment-card--${status}`}
+    >
+      <div className='wrapper-left'>
+        <h3 className='establishment-card__name'>{establishment.name}</h3>
+        <p className='establishment-card__address'>{establishment.address}</p>
+      </div>
+      <p
+        className={`establishment-card__status establishment-card__status--${status}`}
+      >
+        {establishment.status.toUpperCase()}
+      </p>
+    </article>
   );
 };
 

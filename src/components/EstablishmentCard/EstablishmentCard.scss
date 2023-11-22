@@ -1,0 +1,43 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.establishment-card {
+    cursor: pointer;
+    padding: 1rem 1.5rem;
+    width: 27rem;
+    margin-bottom: 1.5rem;
+    border-radius: $border-radius;
+    border: 0.09375rem solid $sec-accent-clr-2;
+    @include row-flexer(space-between);
+    gap: 1.5rem;
+
+    &__name {
+        font-size: $fs-subheader;
+        font-weight: 600;
+        // color: $sec-accent-clr-1;
+    }
+
+    &__status {
+        padding: 1rem;
+        color: #fff;
+        width: fit-content;
+        border-radius: $border-radius;
+        font-weight: 600;
+        font-size: $fs-label;
+
+        &--pass {
+            background-color: #189475;
+            padding: 1rem 1.5rem;
+        }
+
+        &--conditional-pass {
+            background-color: $secondary-clr;
+            min-width: 9.5rem;
+        }
+
+        &--closed {
+            background-color: $primary-clr;
+        }
+    }
+
+}

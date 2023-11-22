@@ -3,20 +3,18 @@ $large-desktop-breakpoint: 1600px;
 $desktop-breakpoint: 1280px;
 $tablet-breakpoint: 768px;
 
-$content-max-width: 100rem; // 1600px
-
-/* Misc Colors */
-$input-error-clr: #D22D2D;
+$content-max-width: 87.5rem; // 1400px
 
 /* Primary Colors */
 $primary-clr: #323232; // primary text
+$primary-clr-mono: #4C4C4C;
 $prim-accent-clr-1: #0095ff; // primary cta, active form field outline
 $prim-accent-clr-2: #afafaf; // secondary text, Text label
-$prim-accent-clr-3: #fff; // background, CTA text
+$prim-accent-clr-3: #FF0095; // background, CTA text
 
 /* Secondary Colors */
-$secondary-clr: #000; // video player
-$sec-accent-clr-1: #0065ad; // cta hover 
+$secondary-clr: #FF6A00;
+$sec-accent-clr-1: #33AAFF; // cta hover 
 $sec-accent-clr-2: #e1e1e1; // divider, form field outline
 $sec-accent-clr-3: #fafafa; // from field background
 

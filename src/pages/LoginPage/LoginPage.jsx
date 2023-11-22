@@ -24,6 +24,7 @@ const Login = () => {
       );
 
       sessionStorage.setItem('token', data.token);
+
       navigate('/');
     } catch (err) {
       console.log({ message: err.message, error: err.response.data });

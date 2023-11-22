@@ -2,5 +2,17 @@
 @use '../../styles/partials/mixins' as *;
 
 .main {
-    margin: 4rem 12rem;
+    &-wrapper {
+        width: 85vw;
+        margin: 0 auto;
+    }
+}
+
+
+.results__matches {
+    font-weight: 600;
+    color: $sec-accent-clr-1;
+    margin-bottom: $space-bottom * 1.5;
+    padding-bottom: $space-bottom-mob;
+    border-bottom: 0.09375rem solid $sec-accent-clr-2;
 }
