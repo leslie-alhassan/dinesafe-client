@@ -203,13 +203,16 @@ const SearchResults = ({ searchResults }) => {
                             day: 'numeric',
                             year: 'numeric',
                           } ||
-                            new Date(
-                              lastInspection[0]['Inspection Date']
-                            ).toLocaleDateString('en-CA', {
-                              month: 'long',
-                              day: 'numeric',
-                              year: 'numeric',
-                            })
+                            (lastInspection[0] &&
+                              new Date(
+                                lastInspection[0][
+                                  'Inspection Date'
+                                ].toLocaleDateString('en-CA', {
+                                  month: 'long',
+                                  day: 'numeric',
+                                  year: 'numeric',
+                                })
+                              ))
                         )
                       : 'No recent inspections'}
                   </p>
@@ -239,13 +242,14 @@ const SearchResults = ({ searchResults }) => {
               className='inspections__title inspections__title--past'
               onClick={() => {
                 setModalIsOpen(true);
+                document.body.style.overflow = 'hidden';
               }}
             >{`SEE PAST INSPECTIONS >`}</h2>
 
             {/* modal */}
             <Modal
               style={modalStyles}
-              className='modal'
+              className='modal modal__scroll'
               isOpen={modalIsOpen}
               onRequestClose={() => {
                 setModalIsOpen(false);

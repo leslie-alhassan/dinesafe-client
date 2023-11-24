@@ -167,11 +167,11 @@
     outline: none;
     padding: 1rem 2rem 2rem;
 
+
     &__title {
         font-weight: 600;
         font-size: 1.5rem;
         color: $sec-accent-clr-1;
-        // color: $sec-accent-clr-2;
     }
 
     &-heading {
@@ -207,4 +207,8 @@
         color: $prim-accent-clr-2;
     }
 
+    &__scroll {
+        max-height: 80vh;
+        overflow: auto;
+    }
 }
