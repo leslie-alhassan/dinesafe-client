@@ -242,7 +242,6 @@ const SearchResults = ({ searchResults }) => {
               className='inspections__title inspections__title--past'
               onClick={() => {
                 setModalIsOpen(true);
-                document.body.style.overflow = 'hidden';
               }}
             >{`SEE PAST INSPECTIONS >`}</h2>
 
