@@ -12,9 +12,13 @@
     gap: 1.5rem;
 
     &__name {
-        font-size: $fs-subheader;
+        font-size: 1.125rem;
         font-weight: 600;
-        // color: $sec-accent-clr-1;
+    }
+
+    &__address {
+        color: $prim-accent-clr-2;
+        font-size: $fs-label;
     }
 
     &__status {

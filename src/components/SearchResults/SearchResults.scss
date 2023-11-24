@@ -14,9 +14,12 @@
 }
 
 .establishment {
-    @include row-flexer(space-between);
-    align-items: flex-start;
     width: 60%;
+
+    &-header {
+        @include row-flexer(space-between);
+        align-items: flex-start;
+    }
 
     &-wrapper-left,
     &-wrapper-middle,
@@ -44,6 +47,7 @@
         &__title {
             font-size: $fs-subheader;
             font-weight: 600;
+            color: $sec-accent-clr-1;
         }
 
         &--pass {
@@ -74,10 +78,133 @@
         &__title {
             font-size: $fs-subheader;
             font-weight: 600;
+            color: $sec-accent-clr-1;
         }
     }
 }
 
-// .left {
-//     // width: 60%;
-// }
+
+.inspections {
+    line-height: 1.5rem;
+
+    p {
+        margin: 0;
+    }
+
+    &__title {
+        font-weight: 600;
+        font-size: $fs-subheader;
+        color: $sec-accent-clr-1;
+
+        &--past {
+            font-size: .6rem;
+            font-weight: 500;
+            color: $prim-accent-clr-3;
+            width: fit-content;
+            cursor: pointer;
+
+            &:hover {
+                border-bottom: 0.0625rem solid $prim-accent-clr-3;
+            }
+        }
+    }
+}
+
+.complaints {
+    font-size: $fs-section-header;
+
+    &__title {
+        font-weight: 600;
+    }
+
+    &__link {
+        text-decoration: none;
+        color: $sec-accent-clr-1;
+    }
+}
+
+
+.details {
+    &-brief {
+        @include row-flexer;
+        gap: .5rem;
+    }
+
+    &__legend {
+        width: .5rem;
+        height: .5rem;
+        border-radius: 50%;
+        background-color: $prim-accent-clr-2;
+
+        &--pass {
+            background-color: #189475;
+        }
+
+        &--conditional-pass {
+            background-color: $secondary-clr;
+        }
+
+        &--closed {
+            background-color: $primary-clr;
+        }
+    }
+
+    &__status {
+        font-weight: 600;
+    }
+
+    &__content {
+        font-size: $fs-label * 1.125;
+        color: $prim-accent-clr-2;
+    }
+}
+
+.modal {
+    width: 50vw;
+    margin: 9vh auto;
+    background-color: #fff;
+    border-radius: $border-radius;
+    outline: none;
+    padding: 1rem 2rem 2rem;
+
+    &__title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        color: $sec-accent-clr-1;
+        // color: $sec-accent-clr-2;
+    }
+
+    &-heading {
+        @include row-flexer(space-between);
+        width: 100%;
+    }
+
+    &__exit-icon {
+        cursor: pointer;
+    }
+
+    &__inspection {
+        font-size: $fs-label * 1.125;
+
+        &__status {
+            font-weight: 600
+        }
+
+        &-brief {
+            @include row-flexer;
+            gap: .5rem;
+        }
+
+        &__details {
+            margin: 0;
+            line-height: 1.5rem;
+            color: $prim-accent-clr-2;
+        }
+    }
+
+    &__no-inspections {
+        font-weight: 600;
+        color: $prim-accent-clr-2;
+    }
+
+}

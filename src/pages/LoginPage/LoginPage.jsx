@@ -1,5 +1,5 @@
 import './LoginPage.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -10,6 +10,15 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
+  // redirect user to homepage if already logged in
+  useEffect(() => {
+    const token = sessionStorage.getItem('token');
+
+    if (token) {
+      navigate('/');
+    }
+  }, []);
 
   const handleLogin = async (event) => {
     event.preventDefault();

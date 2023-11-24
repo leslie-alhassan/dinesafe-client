@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import './SignUpPage.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const SignUpPage = () => {
-  document.title = 'DineSafe | Register';
+  document.title = 'DineSafe | Sign Up';
+  const navigate = useNavigate();
+
+  // redirect user to homepage if already logged in
+  useEffect(() => {
+    const token = sessionStorage.getItem('token');
+
+    if (token) {
+      navigate('/');
+    }
+  }, []);
 
   // form values
   const [email, setEmail] = useState('');

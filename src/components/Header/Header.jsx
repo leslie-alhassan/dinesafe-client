@@ -16,10 +16,13 @@ const Header = ({ user, onSetSearchResults, onSetSearch }) => {
     }
 
     try {
+      const search = searchInput.split(' ').join('_');
+      const parsedSearchInput = search.replace('&', encodeURIComponent('&'));
+
       const { data } = await axios.get(
         `${
           import.meta.env.VITE_SERVER_URL
-        }/api/establishments?search=${searchInput}`
+        }/api/establishments?search=${parsedSearchInput}`
       );
 
       onSetSearchResults(data);

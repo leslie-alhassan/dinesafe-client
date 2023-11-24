@@ -14,6 +14,8 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    document.title = 'DineSafe';
+
     // get current users current location
     navigator.geolocation.watchPosition((position) => {
       const location = {
@@ -87,7 +89,9 @@ const HomePage = () => {
             {/* matches */}
             <p className='results__matches'>
               {nearbyEstablishments.matches}
-              {' establishments near you'}
+              {nearbyEstablishments.matches === 1
+                ? ' establishment near you'
+                : ' establishments near you'}
             </p>
 
             {/* results */}
@@ -114,7 +118,7 @@ const HomePage = () => {
           {/* matches */}
           <p className='results__matches'>
             {searchResults.matches ?? searchResults.length}
-            {' matches'}
+            {searchResults.matches === 1 ? ' match' : ' matches'}
           </p>
 
           {/* results */}
