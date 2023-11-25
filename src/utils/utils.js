@@ -4,7 +4,7 @@ export const calculateRating = (currStatus, lastInspection) => {
 
   // deduct rating based on current status
   if (currStatus.toLowerCase().includes('conditional')) {
-    rating -= 1;
+    rating -= 1.1;
   } else if (currStatus.toLowerCase().includes('closed')) {
     rating -= 3;
   }
@@ -13,13 +13,19 @@ export const calculateRating = (currStatus, lastInspection) => {
     // deduct ratings for each infraction on last inspection
     lastInspection.forEach((inspection) => {
       if (inspection.inspection_details || inspection['Infraction Details']) {
-        rating -= 0.2;
+        rating -= 0.3;
       }
     });
 
-    if (lastInspection[0].status.toLowerCase().includes('conditional')) {
+    console.log('insp', lastInspection);
+    const status =
+      lastInspection[0]['Establishment Status'] || lastInspection[0].status;
+
+    console.log('status', status);
+
+    if (status.toLowerCase().includes('conditional')) {
       rating -= 0.5;
-    } else if (lastInspection[0].status.toLowerCase().includes('closed')) {
+    } else if (status.toLowerCase().includes('closed')) {
       rating -= 1;
     }
   }
