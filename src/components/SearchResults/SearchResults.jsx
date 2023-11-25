@@ -7,6 +7,7 @@ import { v4 as uuid } from 'uuid';
 import useFetchInspections from '../../utils/hooks/useFetchInspections';
 import { useLoadScript } from '@react-google-maps/api';
 import Map from '../Map/Map';
+import { calculateRating } from '../../utils/utils';
 
 Modal.setAppElement('#root');
 const googleMapsApiLibraries = ['places'];
@@ -100,7 +101,7 @@ const SearchResults = ({ searchResults }) => {
               <h2 className='establishment__rating__title'>HEALTH SCORE</h2>
               <p className='establishment__rating'>
                 <span>
-                  {establishmentDetails.status === 'Pass' ? '4.5' : '3.2'}
+                  {calculateRating(establishmentDetails.status, lastInspection)}
                 </span>{' '}
                 / 5
               </p>
