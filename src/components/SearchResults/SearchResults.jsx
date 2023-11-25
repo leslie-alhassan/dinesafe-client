@@ -5,8 +5,11 @@ import Modal from 'react-modal';
 import exitIcon from '../../assets/icons/close-24px.svg';
 import { v4 as uuid } from 'uuid';
 import useFetchInspections from '../../utils/hooks/useFetchInspections';
+import { useLoadScript } from '@react-google-maps/api';
+import Map from '../Map/Map';
 
 Modal.setAppElement('#root');
+const googleMapsApiLibraries = ['places'];
 
 const modalStyles = {
   overlay: {
@@ -19,6 +22,12 @@ const SearchResults = ({ searchResults }) => {
   const [inspections, setInspections] = useState(null);
   const [lastInspection, setLastInspection] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  // load google maps
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+    libraries: googleMapsApiLibraries,
+  });
 
   let inspectionDates;
   if (inspections) {
@@ -190,6 +199,7 @@ const SearchResults = ({ searchResults }) => {
               onRequestClose={() => {
                 setModalIsOpen(false);
               }}
+              // onAfterOpen={(document.body.style.overflow = 'hidden')}
             >
               <div className='modal-heading'>
                 <h1 className='modal__title'>PAST INSPECTIONS</h1>
@@ -259,6 +269,20 @@ const SearchResults = ({ searchResults }) => {
                 })
               )}
             </Modal>
+          </div>
+
+          <div className='container'>
+            <h1 className='container__title'>LOCATION</h1>
+            {!isLoaded ? (
+              <p className='container__loading'>⚠️ UNABLE TO LOAD MAP</p>
+            ) : (
+              <Map
+                position={{
+                  lat: establishmentDetails.lat,
+                  lng: establishmentDetails.lng,
+                }}
+              />
+            )}
           </div>
 
           {/* submit complaints */}

@@ -23,7 +23,6 @@
         display: block;
     }
 
-    // &__form {}
 
     &__input {
         height: 2.5rem;
@@ -35,6 +34,8 @@
 
         &:focus {
             border: 0.09375rem solid $prim-accent-clr-1;
+            background-color: hsl(205, 100%, 50%, 25%);
+            color: #fff;
         }
     }
 

@@ -213,3 +213,15 @@
         overflow: auto;
     }
 }
+
+.container {
+    &__title {
+        font-weight: 600;
+        font-size: $fs-subheader;
+        color: $sec-accent-clr-1;
+    }
+
+    &__loading {
+        color: $prim-accent-clr-2;
+    }
+}

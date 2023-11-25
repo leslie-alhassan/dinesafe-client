@@ -10,7 +10,7 @@ const Header = ({ user, onSetSearchResults, onSetSearch }) => {
   const debouncedSearch = useDebounce(searchInput);
 
   useEffect(() => {
-    const handleSearch = async (event) => {
+    const handleSearch = async () => {
       if (debouncedSearch.length === 0) {
         onSetSearch(false);
         return;
@@ -51,10 +51,6 @@ const Header = ({ user, onSetSearchResults, onSetSearch }) => {
           dinesafe
         </h1>
         {/* search bar */}
-        {/* <form
-          // onSubmit={handleSearch}
-          className='header__form'
-        > */}
         <input
           type='search'
           name='search'
@@ -64,7 +60,6 @@ const Header = ({ user, onSetSearchResults, onSetSearch }) => {
             setSearchInput(e.target.value);
           }}
         />
-        {/* </form> */}
         {!user ? (
           <div className='header__buttons'>
             <button
