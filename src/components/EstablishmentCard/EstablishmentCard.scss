@@ -11,6 +11,10 @@
     @include row-flexer(space-between);
     gap: 1.5rem;
 
+    &--active {
+        border: 0.09375rem solid $sec-accent-clr-1;
+    }
+
     &__name {
         font-size: 1.125rem;
         font-weight: 600;
@@ -43,5 +47,4 @@
             background-color: $primary-clr;
         }
     }
-
 }

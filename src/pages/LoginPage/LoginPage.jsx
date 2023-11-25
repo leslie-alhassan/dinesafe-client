@@ -70,7 +70,7 @@ const Login = () => {
           {error && <div className='login__form__message'>{error}</div>}
         </form>
         <Link
-          to='/'
+          to='/home'
           className='login__link'
         >
           Continue without logging in

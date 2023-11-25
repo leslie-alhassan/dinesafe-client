@@ -1,39 +1,43 @@
 import './Header.scss';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import useDebounce from '../../utils/hooks/useDebounce';
 
 const Header = ({ user, onSetSearchResults, onSetSearch }) => {
   const navigate = useNavigate();
   const [searchInput, setSearchInput] = useState('');
+  const debouncedSearch = useDebounce(searchInput);
 
-  const handleSearch = async (event) => {
-    event.preventDefault();
+  useEffect(() => {
+    const handleSearch = async (event) => {
+      if (debouncedSearch.length === 0) {
+        onSetSearch(false);
+        return;
+      }
 
-    if (searchInput.length === 0) {
-      onSetSearch(false);
-      return;
-    }
+      try {
+        const search = debouncedSearch.split(' ').join('_');
+        const parsedSearchInput = search.replace('&', encodeURIComponent('&'));
 
-    try {
-      const search = searchInput.split(' ').join('_');
-      const parsedSearchInput = search.replace('&', encodeURIComponent('&'));
+        const { data } = await axios.get(
+          `${
+            import.meta.env.VITE_SERVER_URL
+          }/api/establishments?search=${parsedSearchInput}`
+        );
 
-      const { data } = await axios.get(
-        `${
-          import.meta.env.VITE_SERVER_URL
-        }/api/establishments?search=${parsedSearchInput}`
-      );
+        onSetSearchResults(data);
+        onSetSearch(true);
+      } catch (err) {
+        console.log('Unable to search for results', err);
+      }
+    };
 
-      onSetSearchResults(data);
-      onSetSearch(true);
-    } catch (err) {
-      console.log('Unable to search for results', err);
-    }
-  };
+    handleSearch();
+  }, [debouncedSearch]);
 
   const handleRedirect = () => {
-    navigate('/');
+    navigate('/home');
     window.location.reload();
   };
 
@@ -47,18 +51,20 @@ const Header = ({ user, onSetSearchResults, onSetSearch }) => {
           dinesafe
         </h1>
         {/* search bar */}
-        <form
-          onSubmit={handleSearch}
+        {/* <form
+          // onSubmit={handleSearch}
           className='header__form'
-        >
-          <input
-            type='search'
-            name='search'
-            placeholder={user ? 'Search' : 'Search for establishments'}
-            className='header__input'
-            onChange={(e) => setSearchInput(e.target.value)}
-          />
-        </form>
+        > */}
+        <input
+          type='search'
+          name='search'
+          placeholder={user ? 'Search' : 'Search for establishments'}
+          className='header__input'
+          onChange={(e) => {
+            setSearchInput(e.target.value);
+          }}
+        />
+        {/* </form> */}
         {!user ? (
           <div className='header__buttons'>
             <button
