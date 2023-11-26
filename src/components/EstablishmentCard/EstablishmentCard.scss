@@ -25,6 +25,16 @@
         font-size: $fs-label;
     }
 
+    &__score {
+        font-size: $fs-label;
+        background-color: $prim-accent-clr-2;
+        color: $sec-accent-clr-3;
+        width: 2rem;
+        text-align: center;
+        padding: .25rem;
+        border-radius: $border-radius;
+    }
+
     &__status {
         padding: 1rem;
         color: #fff;

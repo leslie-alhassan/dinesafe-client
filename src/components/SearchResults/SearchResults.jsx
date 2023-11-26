@@ -31,6 +31,7 @@ const SearchResults = ({ searchResults }) => {
     libraries: googleMapsApiLibraries,
   });
 
+  // set inspection dates
   let inspectionDates;
   if (inspections) {
     const [, ...dates] = inspections && Object.keys(inspections);
@@ -50,6 +51,7 @@ const SearchResults = ({ searchResults }) => {
 
     if (establishmentDetails?.id) {
       fetchInspections();
+      // set the id of the currently selected card in state
       setIsSelectedId(establishmentDetails.id);
     }
   }, [establishmentDetails]);
@@ -58,6 +60,8 @@ const SearchResults = ({ searchResults }) => {
   const status =
     establishmentDetails &&
     establishmentDetails.status.split(' ').join('-').toLowerCase();
+
+  // click event
   const handleCardClick = (establishment) => {
     setEstablishmentDetails(establishment);
   };
