@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useRef } from 'react';
 import './Map.scss';
-import { GoogleMap, Marker, DirectionsRenderer } from '@react-google-maps/api';
+import { GoogleMap, Marker } from '@react-google-maps/api';
 
 const Map = ({ position }) => {
   const options = useMemo(
@@ -11,8 +11,6 @@ const Map = ({ position }) => {
     }),
     []
   );
-  const mapRef = useRef();
-  const onLoad = useCallback((map) => (mapRef.current = map), []);
 
   return (
     <div className='map'>
@@ -21,7 +19,6 @@ const Map = ({ position }) => {
         zoom={15}
         mapContainerClassName='map-container'
         options={options}
-        onLoad={onLoad}
       >
         {position && <Marker position={position} />}
       </GoogleMap>

@@ -1,19 +1,21 @@
 import './EstablishmentCard.scss';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const EstablishmentCard = ({ establishment, onHandleCardClick }) => {
+const EstablishmentCard = ({
+  establishment,
+  onHandleCardClick,
+  isSelectedId,
+}) => {
   const status = establishment.status.split(' ').join('-').toLowerCase();
-  const [isSelected, setIsSelected] = useState(false);
 
   return (
     <article
       onClick={() => {
         onHandleCardClick(establishment);
-        setIsSelected(!isSelected);
       }}
       className={
-        isSelected
+        establishment.id === isSelectedId
           ? `establishment-card establishment-card__${status} establishment-card--active`
           : `establishment-card establishment-card__${status}`
       }

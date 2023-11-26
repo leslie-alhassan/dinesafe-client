@@ -50,7 +50,7 @@ const HomePage = () => {
     if (!token) {
       return;
     } else {
-      navigate('/');
+      navigate('/home');
     }
 
     // get current user

@@ -34,7 +34,7 @@ const Login = () => {
 
       sessionStorage.setItem('token', data.token);
 
-      navigate('/');
+      navigate('/home');
     } catch (err) {
       console.log({ message: err.message, error: err.response.data });
       setError(err.response.data);

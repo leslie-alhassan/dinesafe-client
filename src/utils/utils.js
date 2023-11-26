@@ -1,5 +1,4 @@
-export const calculateRating = (currStatus, lastInspection) => {
-  // lastInspection: [date: [inspections]]
+export const getHealthScore = (currStatus, lastInspection) => {
   let rating = 5;
 
   // deduct rating based on current status
@@ -17,11 +16,8 @@ export const calculateRating = (currStatus, lastInspection) => {
       }
     });
 
-    console.log('insp', lastInspection);
     const status =
       lastInspection[0]['Establishment Status'] || lastInspection[0].status;
-
-    console.log('status', status);
 
     if (status.toLowerCase().includes('conditional')) {
       rating -= 0.5;

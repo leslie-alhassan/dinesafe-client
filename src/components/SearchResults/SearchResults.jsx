@@ -7,7 +7,7 @@ import { v4 as uuid } from 'uuid';
 import useFetchInspections from '../../utils/hooks/useFetchInspections';
 import { useLoadScript } from '@react-google-maps/api';
 import Map from '../Map/Map';
-import { calculateRating } from '../../utils/utils';
+import { getHealthScore } from '../../utils/utils';
 
 Modal.setAppElement('#root');
 const googleMapsApiLibraries = ['places'];
@@ -23,6 +23,7 @@ const SearchResults = ({ searchResults }) => {
   const [inspections, setInspections] = useState(null);
   const [lastInspection, setLastInspection] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [isSelectedId, setIsSelectedId] = useState('');
 
   // load google maps
   const { isLoaded } = useLoadScript({
@@ -36,6 +37,7 @@ const SearchResults = ({ searchResults }) => {
     inspectionDates = dates;
   }
 
+  // fetch inspection details for establishment clicked
   useEffect(() => {
     const fetchInspections = async () => {
       const groupedInspections = await useFetchInspections(
@@ -48,9 +50,11 @@ const SearchResults = ({ searchResults }) => {
 
     if (establishmentDetails?.id) {
       fetchInspections();
+      setIsSelectedId(establishmentDetails.id);
     }
   }, [establishmentDetails]);
 
+  // reformat establishment status for classNames
   const status =
     establishmentDetails &&
     establishmentDetails.status.split(' ').join('-').toLowerCase();
@@ -65,8 +69,10 @@ const SearchResults = ({ searchResults }) => {
           return (
             <EstablishmentCard
               key={uuid()}
+              id={establishmentDetails?.id}
               establishment={establishment}
               onHandleCardClick={handleCardClick}
+              isSelectedId={isSelectedId}
             />
           );
         })}
@@ -101,7 +107,7 @@ const SearchResults = ({ searchResults }) => {
               <h2 className='establishment__rating__title'>HEALTH SCORE</h2>
               <p className='establishment__rating'>
                 <span>
-                  {calculateRating(establishmentDetails.status, lastInspection)}
+                  {getHealthScore(establishmentDetails.status, lastInspection)}
                 </span>{' '}
                 / 5
               </p>
