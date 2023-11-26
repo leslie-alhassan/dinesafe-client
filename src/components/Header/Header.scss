@@ -47,6 +47,10 @@
             font-weight: 600;
             font-size: $fs-label;
             color: #fff;
+
+            &--landing {
+                color: $primary-clr-mono;
+            }
         }
     }
 

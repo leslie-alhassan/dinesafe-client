@@ -66,6 +66,7 @@ const SearchResults = ({ searchResults }) => {
     setEstablishmentDetails(establishment);
   };
 
+  // render
   return (
     <section className='search-results'>
       <div className='search-results-wrapper scroll'>

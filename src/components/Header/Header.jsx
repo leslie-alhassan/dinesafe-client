@@ -1,6 +1,6 @@
 import './Header.scss';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import useDebounce from '../../utils/hooks/useDebounce';
 
@@ -29,27 +29,25 @@ const Header = ({ user, onSetSearchResults, onSetSearch }) => {
         onSetSearchResults(data);
         onSetSearch(true);
       } catch (err) {
-        console.log('Unable to search for results', err);
+        console.log({
+          message: 'Unable to search for results',
+          error: err,
+        });
       }
     };
 
     handleSearch();
   }, [debouncedSearch]);
 
-  const handleRedirect = () => {
-    navigate('/home');
-    window.location.reload();
-  };
-
   return (
     <header className='header'>
       <div className='header-wrapper content-width-wrapper'>
-        <h1
+        <Link
+          to='/'
           className='header__link'
-          onClick={handleRedirect}
         >
           dinesafe
-        </h1>
+        </Link>
         {/* search bar */}
         <input
           type='search'

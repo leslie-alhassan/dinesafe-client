@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import LandingPage from './pages/LandingPage/LandingPage';
 import HomePage from './pages/HomePage/HomePage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
@@ -11,7 +12,7 @@ const App = () => {
       <Routes>
         <Route
           path='/'
-          element={<LoginPage />}
+          element={<LandingPage />}
         />
 
         <Route
