@@ -2,9 +2,16 @@
 @use '../../styles/partials/variables' as *;
 
 .login {
+    height: 100vh;
+    background-image: radial-gradient(circle at center,
+            $prim-accent-clr-2 0.03rem,
+            transparent 0);
+    background-size: 1rem 1rem;
+    background-repeat: round;
+
     &-wrapper {
         @include col-flexer(center);
-        margin: 30vh 0;
+        padding: 30vh 0;
     }
 
     &__form {
