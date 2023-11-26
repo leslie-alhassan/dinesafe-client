@@ -2,14 +2,30 @@
 @use '../../styles/partials/mixins' as *;
 
 .landing {
-    width: 85vw;
-    margin: 0 auto;
+    height: 100vh;
+    background-image: radial-gradient(circle at center,
+            $prim-accent-clr-2 0.025rem,
+            transparent 0);
+    background-size: 1rem 1rem;
+    background-repeat: round;
+
+    &-header {
+        background-color: rgb(28, 28, 28);
+        box-shadow: 0rem 0.125rem 0.3125rem 0rem rgba(19, 24, 44, 0.1);
+    }
+
+    &-wrapper {
+        width: 85vw;
+        margin: 0 auto;
+    }
 
     &__brief {
         color: $primary-clr-mono;
         width: 60%;
-        margin: 2rem auto;
+        margin: 0 auto 2rem;
+        padding-top: 2rem;
         text-align: center;
+        line-height: 1.5rem;
 
         span {
             font-size: $fs-header;
@@ -41,6 +57,7 @@
             border-radius: $border-radius;
             padding: 1rem;
             margin-bottom: $space-bottom;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
 
             &--pass {
                 background-color: $tertiary-clr-1;
