@@ -17,11 +17,13 @@ const Header = ({ user, onSetSearchResults, onSetSearchNearby }) => {
 
       // handle search for nearby establishments
       if (
-        debouncedSearch.toLowerCase().includes('near') ||
-        debouncedSearch.toLowerCase().includes('nearby')
+        debouncedSearch.toLowerCase() === 'near' ||
+        debouncedSearch.toLowerCase() === 'near me' ||
+        debouncedSearch.toLowerCase() === 'nearby'
       ) {
         onSetSearchNearby(true);
       }
+      onSetSearchNearby(false);
 
       try {
         const search = debouncedSearch.split(' ').join('_');
@@ -62,6 +64,9 @@ const Header = ({ user, onSetSearchResults, onSetSearchNearby }) => {
           className='header__input'
           onChange={(e) => {
             setSearchInput(e.target.value);
+          }}
+          onClick={(e) => {
+            e.target.value = '';
           }}
         />
         {!user ? (

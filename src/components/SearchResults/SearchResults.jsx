@@ -8,6 +8,7 @@ import useFetchInspections from '../../utils/hooks/useFetchInspections';
 import { useLoadScript } from '@react-google-maps/api';
 import Map from '../Map/Map';
 import { getHealthScore } from '../../utils/utils';
+import Reviews from '../Reviews/Reviews';
 
 Modal.setAppElement('#root');
 const googleMapsApiLibraries = ['places'];
@@ -18,7 +19,7 @@ const modalStyles = {
   },
 };
 
-const SearchResults = ({ searchResults }) => {
+const SearchResults = ({ searchResults, user }) => {
   const [establishmentDetails, setEstablishmentDetails] = useState(null);
   const [inspections, setInspections] = useState(null);
   const [lastInspection, setLastInspection] = useState([]);
@@ -118,7 +119,6 @@ const SearchResults = ({ searchResults }) => {
               </p>
             </div>
           </div>
-
           {/* last inspection */}
           <div className='inspections'>
             <div className='inspection__details inspection__details--last'>
@@ -211,7 +211,6 @@ const SearchResults = ({ searchResults }) => {
               onRequestClose={() => {
                 setModalIsOpen(false);
               }}
-              // onAfterOpen={(document.body.style.overflow = 'hidden')}
             >
               <div className='modal-heading'>
                 <h1 className='modal__title'>PAST INSPECTIONS</h1>
@@ -282,7 +281,6 @@ const SearchResults = ({ searchResults }) => {
               )}
             </Modal>
           </div>
-
           <div className='container'>
             <h1 className='container__title'>LOCATION</h1>
             {!isLoaded ? (
@@ -296,6 +294,9 @@ const SearchResults = ({ searchResults }) => {
               />
             )}
           </div>
+
+          {/* comments */}
+          <Reviews user={user} />
 
           {/* submit complaints */}
           <div className='complaints'>

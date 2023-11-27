@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import SearchResults from '../../components/SearchResults/SearchResults';
-import { isPointWithinRadius, orderByDistance } from 'geolib';
+import { isPointWithinRadius } from 'geolib';
 
 const HomePage = () => {
   const [user, setUser] = useState(null);
@@ -17,8 +17,8 @@ const HomePage = () => {
   useEffect(() => {
     if (searchNearby) {
       setSearchResults(nearbyEstablishments);
+      setSearchNearby(false);
     }
-    setSearchNearby(false);
   }, [searchNearby]);
 
   useEffect(() => {
@@ -82,7 +82,7 @@ const HomePage = () => {
   if (
     nearbyEstablishments?.data?.length > 0 &&
     searchResults.length === 0 &&
-    !searchNearby
+    nearbyEstablishments
   ) {
     return (
       <>
@@ -103,7 +103,10 @@ const HomePage = () => {
             </p>
 
             {/* results */}
-            <SearchResults searchResults={nearbyEstablishments} />
+            <SearchResults
+              searchResults={nearbyEstablishments}
+              user={user}
+            />
           </div>
         </main>
       </>
@@ -133,7 +136,10 @@ const HomePage = () => {
           {searchResults.length === 0 ? (
             `No search results.`
           ) : (
-            <SearchResults searchResults={searchResults} />
+            <SearchResults
+              searchResults={searchResults}
+              user={user}
+            />
           )}
         </div>
       </main>

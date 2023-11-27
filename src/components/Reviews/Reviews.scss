@@ -1,0 +1,78 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.reviews {
+    &__title {
+        font-weight: 600;
+        font-size: $fs-subheader;
+        color: $sec-accent-clr-1;
+        margin: $space-top 0 $space-bottom-mob;
+    }
+
+    &-wrapper {
+        @include row-flexer;
+        align-items: flex-start;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    &__avatar {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: $border-radius;
+    }
+
+    &__username {
+        margin: 0;
+        color: $sec-accent-clr-3;
+        padding: .25rem;
+        border-radius: $border-radius;
+        font-size: $fs-label;
+        font-weight: 600;
+        background-color: $primary-clr;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    &__form {
+        width: 100%;
+        @include col-flexer;
+
+        &__input {
+            width: 100%;
+            outline: none;
+            border-radius: $border-radius;
+            padding: .8rem 1rem 4rem;
+            border: 0.09375rem solid rgba(46, 102, 229, .07);
+            background-color: rgba(46, 102, 229, .07);
+
+            &:focus {
+                border: 0.09375rem solid $sec-accent-clr-1;
+            }
+
+            &--no-user {
+                border: 0.09375rem solid rgba(177, 73, 73, 0.07);
+                background-color: rgba(177, 73, 73, 0.07);
+            }
+        }
+
+        &__button {
+            margin: 1rem 0;
+            height: 2.5rem;
+            padding: 0 1rem;
+            cursor: pointer;
+            color: #fff;
+            border: none;
+            font-weight: bold;
+            font-size: 1rem;
+            border-radius: .25rem;
+            background-color: $prim-accent-clr-1;
+            background-color: $primary-clr;
+            align-self: flex-end;
+
+            &:hover {
+                background-color: $primary-clr-mono;
+
+            }
+        }
+    }
+}
