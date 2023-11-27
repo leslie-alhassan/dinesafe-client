@@ -31,6 +31,8 @@
         font-weight: 600;
         background-color: $primary-clr;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        // background-color: $prim-accent-clr-3;
+        // box-shadow: rgba(255, 0, 149, 0.24) 0px 3px 8px;
     }
 
     &__form {
@@ -74,5 +76,51 @@
 
             }
         }
+    }
+}
+
+.comments {
+    margin: $space-between 0;
+
+    &__count {
+        font-weight: 600;
+        font-size: $fs-subheader;
+        color: $prim-accent-clr-2;
+        color: $primary-clr-mono;
+    }
+
+    &__username {
+        margin: 0;
+        color: $sec-accent-clr-3;
+        padding: .25rem;
+        border-radius: $border-radius;
+        font-size: $fs-label;
+        font-weight: 600;
+        background-color: $primary-clr;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        width: fit-content;
+
+        &--user {
+            background-color: $sec-accent-clr-1;
+            box-shadow: rgba(51, 170, 255, 0.24) 0px 3px 8px;
+        }
+    }
+
+    &__comment-wrapper {
+        @include row-flexer;
+        gap: $space-between-mob;
+        border-radius: $border-radius;
+        background-color: rgba(46, 102, 229, .07);
+        background-color: rgba(21, 132, 99, .07);
+        padding: 1rem;
+        margin-bottom: $space-bottom-mob;
+
+        &--none {
+            font-weight: 600;
+        }
+    }
+
+    &__comment {
+        font-size: $fs-label;
     }
 }

@@ -19,6 +19,11 @@
         margin: 0 auto;
     }
 
+    &__logged-in {
+        color: $sec-accent-clr-1;
+        font-size: $fs-label;
+    }
+
     &__brief {
         color: $primary-clr-mono;
         width: 60%;

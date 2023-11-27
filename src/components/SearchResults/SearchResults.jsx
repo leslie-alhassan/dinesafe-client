@@ -296,7 +296,10 @@ const SearchResults = ({ searchResults, user }) => {
           </div>
 
           {/* comments */}
-          <Reviews user={user} />
+          <Reviews
+            user={user}
+            establishmentId={establishmentDetails.id}
+          />
 
           {/* submit complaints */}
           <div className='complaints'>

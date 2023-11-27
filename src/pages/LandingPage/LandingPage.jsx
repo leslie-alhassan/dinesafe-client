@@ -1,9 +1,16 @@
 import { Link, useNavigate } from 'react-router-dom';
 import './LandingPage.scss';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const LandingPage = () => {
+  const [user, setUser] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = sessionStorage.getItem('token');
+
+    token && setUser(true);
+  }, []);
 
   return (
     <>
@@ -17,11 +24,14 @@ const LandingPage = () => {
           </Link>
 
           <div className='header__buttons'>
+            {user && <p className='landing__logged-in'>You're logged in</p>}
             <button
               className='header__button header__button--login'
-              onClick={() => navigate('/home')}
+              onClick={() => {
+                user ? navigate('/home') : navigate('/login');
+              }}
             >
-              Get started
+              {user ? 'Explore' : 'Get started'}
             </button>
           </div>
         </div>

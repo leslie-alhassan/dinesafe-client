@@ -65,7 +65,13 @@ const useFetchInspections = async (establishmentId, establishmentName) => {
       return groupedInspections;
     }
   } catch (err) {
-    console.log('Unable to fetch inspections');
+    console.log({
+      message: 'Unable to fetch inspections',
+      meta: `tried fetching: ${
+        import.meta.env.VITE_SERVER_URL
+      }/api/inspections/${establishmentId}`,
+      error: err,
+    });
   }
 };
 
