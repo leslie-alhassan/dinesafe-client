@@ -22,8 +22,8 @@
     &__brief {
         color: $primary-clr-mono;
         width: 60%;
-        margin: 0 auto 2rem;
-        padding-top: 2rem;
+        margin: 1rem auto 3rem;
+        padding-top: 3rem;
         text-align: center;
         line-height: 1.5rem;
 
@@ -33,10 +33,29 @@
             padding: 0 .5rem;
         }
     }
+
+
+    .learn-more {
+        @include row-flexer(flex-end);
+
+        &__link {
+            text-decoration: none;
+            color: $sec-accent-clr-1;
+            font-weight: 600;
+            font-size: .8rem;
+            width: fit-content;
+            padding-bottom: .25rem;
+            transition: .25s ease;
+
+            &:hover {
+                font-size: 1rem;
+            }
+        }
+    }
 }
 
 .about {
-    @include row-flexer;
+    @include row-flexer(center);
     align-items: flex-start;
     gap: $space-between * 2;
     color: #fff;
@@ -57,7 +76,7 @@
             border-radius: $border-radius;
             padding: 1rem;
             margin-bottom: $space-bottom;
-            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
             &--pass {
                 background-color: $tertiary-clr-1;

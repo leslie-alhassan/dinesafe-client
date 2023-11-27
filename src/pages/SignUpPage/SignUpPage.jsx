@@ -12,7 +12,7 @@ const SignUpPage = () => {
     const token = sessionStorage.getItem('token');
 
     if (token) {
-      navigate('/');
+      navigate('/home');
     }
   }, []);
 
@@ -56,7 +56,12 @@ const SignUpPage = () => {
   return (
     <section className='sign-up'>
       <article className='sign-up__about'>
-        <h1 className='sign-up__about__title'>DineSafe</h1>
+        <Link
+          to='/'
+          className='sign-up__about__title'
+        >
+          DineSafe
+        </Link>
 
         <p className='sign-up__about__content'>
           DineSafe is Toronto Public Health’s food safety program that inspects

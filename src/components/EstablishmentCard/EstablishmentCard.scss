@@ -11,8 +11,14 @@
     @include row-flexer(space-between);
     gap: 1.5rem;
 
+    &:hover {
+        // background-color: rgba(46, 102, 229, .07);
+        border: 0.09375rem solid $sec-accent-clr-1;
+    }
+
     &--active {
         border: 0.09375rem solid $sec-accent-clr-1;
+        background-color: rgba(46, 102, 229, .07);
     }
 
     &__name {

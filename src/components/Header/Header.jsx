@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import useDebounce from '../../utils/hooks/useDebounce';
 
-const Header = ({ user, onSetSearchResults, onSetSearch }) => {
+const Header = ({ user, onSetSearchResults, onSetSearchNearby }) => {
   const navigate = useNavigate();
   const [searchInput, setSearchInput] = useState('');
   const debouncedSearch = useDebounce(searchInput);
@@ -12,8 +12,15 @@ const Header = ({ user, onSetSearchResults, onSetSearch }) => {
   useEffect(() => {
     const handleSearch = async () => {
       if (debouncedSearch.length === 0) {
-        onSetSearch(false);
         return;
+      }
+
+      // handle search for nearby establishments
+      if (
+        debouncedSearch.toLowerCase().includes('near') ||
+        debouncedSearch.toLowerCase().includes('nearby')
+      ) {
+        onSetSearchNearby(true);
       }
 
       try {
@@ -27,7 +34,6 @@ const Header = ({ user, onSetSearchResults, onSetSearch }) => {
         );
 
         onSetSearchResults(data);
-        onSetSearch(true);
       } catch (err) {
         console.log({
           message: 'Unable to search for results',

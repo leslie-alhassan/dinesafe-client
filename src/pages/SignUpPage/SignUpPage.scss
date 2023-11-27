@@ -18,6 +18,8 @@
         &__title {
             font-size: $fs-header;
             font-weight: 600;
+            text-decoration: none;
+            color: $primary-clr;
         }
 
         &__content {

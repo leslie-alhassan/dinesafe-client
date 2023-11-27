@@ -8,10 +8,18 @@ import { isPointWithinRadius, orderByDistance } from 'geolib';
 
 const HomePage = () => {
   const [user, setUser] = useState(null);
-  const [search, setSearch] = useState(false);
+  const [searchNearby, setSearchNearby] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [nearbyEstablishments, setNearbyEstablishments] = useState([]);
   const navigate = useNavigate();
+
+  // handle search for nearby establishments
+  useEffect(() => {
+    if (searchNearby) {
+      setSearchResults(nearbyEstablishments);
+    }
+    setSearchNearby(false);
+  }, [searchNearby]);
 
   useEffect(() => {
     document.title = 'DineSafe';
@@ -74,14 +82,14 @@ const HomePage = () => {
   if (
     nearbyEstablishments?.data?.length > 0 &&
     searchResults.length === 0 &&
-    !search
+    !searchNearby
   ) {
     return (
       <>
         <Header
           user={user}
           onSetSearchResults={setSearchResults}
-          onSetSearch={setSearch}
+          onSetSearchNearby={setSearchNearby}
         />
 
         <main className='main'>
@@ -110,7 +118,7 @@ const HomePage = () => {
       <Header
         user={user}
         onSetSearchResults={setSearchResults}
-        onSetSearch={setSearch}
+        onSetSearchNearby={setSearchNearby}
       />
 
       <main className='main'>

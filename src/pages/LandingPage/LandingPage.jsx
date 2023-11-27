@@ -19,7 +19,7 @@ const LandingPage = () => {
           <div className='header__buttons'>
             <button
               className='header__button header__button--login'
-              onClick={() => navigate('/login')}
+              onClick={() => navigate('/home')}
             >
               Get started
             </button>
@@ -28,7 +28,7 @@ const LandingPage = () => {
       </header>
 
       <section className='landing'>
-        <div className='landing-wrapper'>
+        <div className='landing-wrapper content-width-wrapper'>
           <p className='landing__brief'>
             <span>Dinesafe</span> is Toronto Public Health's food safety program
             that inspects all establishments serving and preparing food. Each
@@ -114,6 +114,17 @@ const LandingPage = () => {
               </li>
             </ul>
           </article>
+
+          {/* learn more */}
+          <div className='learn-more'>
+            <a
+              className='learn-more__link'
+              href='https://www.ontario.ca/laws/regulation/170493'
+              target='blank'
+            >
+              {'LEARN MORE >'}
+            </a>
+          </div>
         </div>
       </section>
     </>
