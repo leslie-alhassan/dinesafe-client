@@ -114,7 +114,7 @@ const Header = ({ user, onSetSearchResults, onSetSearchNearby }) => {
                 className='header__user__sign-out'
                 onClick={handleSignOut}
               >
-                SIGN
+                SIGN OUT
               </Link>
             )}
           </div>
