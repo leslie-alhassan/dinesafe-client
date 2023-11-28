@@ -29,10 +29,8 @@
         border-radius: $border-radius;
         font-size: $fs-label;
         font-weight: 600;
-        background-color: $primary-clr;
+        background-color: $primary-clr-mono;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        // background-color: $prim-accent-clr-3;
-        // box-shadow: rgba(255, 0, 149, 0.24) 0px 3px 8px;
     }
 
     &__form {
@@ -46,6 +44,9 @@
             padding: .8rem 1rem 4rem;
             border: 0.09375rem solid rgba(46, 102, 229, .07);
             background-color: rgba(46, 102, 229, .07);
+            resize: none;
+            font-family: $ff-primary;
+            font-size: $fs-subheader;
 
             &:focus {
                 border: 0.09375rem solid $sec-accent-clr-1;
@@ -92,11 +93,11 @@
     &__username {
         margin: 0;
         color: $sec-accent-clr-3;
-        padding: .25rem;
+        padding: .25rem .5rem;
         border-radius: $border-radius;
         font-size: $fs-label;
         font-weight: 600;
-        background-color: $primary-clr;
+        background-color: $primary-clr-mono;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         width: fit-content;
 
@@ -107,10 +108,8 @@
     }
 
     &__comment-wrapper {
-        @include row-flexer;
-        gap: $space-between-mob;
+        @include col-flexer;
         border-radius: $border-radius;
-        background-color: rgba(46, 102, 229, .07);
         background-color: rgba(21, 132, 99, .07);
         padding: 1rem;
         margin-bottom: $space-bottom-mob;
@@ -121,6 +120,21 @@
     }
 
     &__comment {
+        font-size: $fs-subheader;
+        font-weight: 500;
+        margin: 0;
+        max-width: 85%;
+    }
+
+    &__content {
+        @include row-flexer;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: $space-between-mob;
+    }
+
+    &__timestamp {
         font-size: $fs-label;
+        color: $prim-accent-clr-2;
     }
 }

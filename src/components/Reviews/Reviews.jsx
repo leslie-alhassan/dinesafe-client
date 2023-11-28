@@ -8,8 +8,6 @@ const Reviews = ({ user, establishmentId }) => {
   const [comment, setComment] = useState('');
   const [error, setError] = useState('');
 
-  console.log('comments', comments, 'comment', comment);
-
   const fetchComments = async () => {
     try {
       const { data } = await axios.get(
@@ -20,25 +18,22 @@ const Reviews = ({ user, establishmentId }) => {
 
       // fetch comment usernames
       if (!data) {
-        console.log('fetch got nothing');
         return setComments(null);
       }
-      console.log('fetch got something');
+
       setComments(data);
     } catch (err) {
-      console.log(
+      console.error(
         `Unable to fetch comments for establishment with ID ${establishmentId}`
       );
     }
   };
 
   const handleSubmit = async (event) => {
-    console.log('handling submit');
     event.preventDefault();
     event.target.reset();
 
     if (!comment) {
-      console.log('empty comment section');
       return setError('Comment section cannot be empty');
     }
 
@@ -56,12 +51,6 @@ const Reviews = ({ user, establishmentId }) => {
 
     // refetch new comments
     await fetchComments();
-
-    // if (establishmentId) {
-    console.log('curr comments:', comments);
-
-    console.log('comments after new fetch', comments);
-    // }
   };
 
   useEffect(() => {
@@ -88,7 +77,7 @@ const Reviews = ({ user, establishmentId }) => {
           className='reviews__form'
           onSubmit={handleSubmit}
         >
-          <input
+          <textarea
             onChange={(event) => setComment(event.target.value)}
             type='text'
             className={
@@ -124,7 +113,7 @@ const Reviews = ({ user, establishmentId }) => {
         {/* comment count */}
         {comments && (
           <p className='comments__count'>
-            {comments.length} {comments.length > 1 ? 'COMMENTS' : 'COMMENT'}
+            {comments.length} {comments.length > 1 ? 'REVIEWS' : 'REVIEW'}
           </p>
         )}
         {comments ? (
@@ -134,24 +123,34 @@ const Reviews = ({ user, establishmentId }) => {
                 className='comments__comment-wrapper'
                 key={comment.id}
               >
-                <p
-                  className={
-                    comment.user_id === user?.id
-                      ? 'comments__username comments__username--user'
-                      : 'comments__username'
-                  }
-                >
-                  {comment.user_id === user?.id
-                    ? 'you'
-                    : `@${comment.username}`}
+                <div className='comments__content'>
+                  <p
+                    className={
+                      comment.user_id === user?.id
+                        ? 'comments__username comments__username--user'
+                        : 'comments__username'
+                    }
+                  >
+                    {comment.user_id === user?.id
+                      ? 'me'
+                      : `@${comment.username}`}
+                  </p>
+                  <p className='comments__comment'>{comment.comment}</p>
+                </div>
+                <p className='comments__timestamp'>
+                  {comment &&
+                    new Date(comment.created_at).toLocaleDateString('en-CA', {
+                      month: 'short',
+                      day: 'numeric',
+                      year: 'numeric',
+                    })}
                 </p>
-                <p className='comments__comment'>{comment.comment}</p>
               </article>
             );
           })
         ) : (
           <p className='comments__comment-wrapper comments__comment-wrapper--none'>
-            NO COMMENTS
+            NO REVIEWS
           </p>
         )}
       </div>

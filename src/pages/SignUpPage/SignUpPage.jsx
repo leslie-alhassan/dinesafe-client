@@ -47,7 +47,7 @@ const SignUpPage = () => {
       setError('');
       setSuccess(true);
     } catch (err) {
-      console.log({ message: err.message, error: err.response.data });
+      console.error({ message: err.message, error: err.response.data });
       setError(err.response.data);
       setSuccess(false);
     }

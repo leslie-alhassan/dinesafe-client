@@ -33,7 +33,7 @@ const useFetchInspections = async (establishmentId, establishmentName) => {
             inspectionDetails
           );
         } catch (err) {
-          console.log({
+          console.error({
             message: `Unable to populate database with inspection details for ${establishmentName}`,
             error: err.message,
           });
@@ -65,7 +65,7 @@ const useFetchInspections = async (establishmentId, establishmentName) => {
       return groupedInspections;
     }
   } catch (err) {
-    console.log({
+    console.error({
       message: 'Unable to fetch inspections',
       meta: `tried fetching: ${
         import.meta.env.VITE_SERVER_URL

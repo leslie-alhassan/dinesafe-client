@@ -83,6 +83,36 @@
 
     &__user-profile {
         width: 10rem;
-        color: $sec-accent-clr-1;
+        color: #fff;
+        margin: 0;
+        position: relative;
+        cursor: pointer;
+
+    }
+
+    &__user {
+        @include row-flexer;
+        gap: .25rem;
+
+        &:hover {
+            color: $sec-accent-clr-1;
+        }
+
+        &__sign-out {
+            text-decoration: none;
+            color: $primary-clr-mono;
+            background-color: #fff;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border-radius: $border-radius;
+            padding: 1rem;
+            position: absolute;
+            bottom: -2.5rem;
+            font-weight: 500;
+
+            &:hover {
+                background-color: $sec-accent-clr-1;
+                color: #fff;
+            }
+        }
     }
 }

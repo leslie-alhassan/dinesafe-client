@@ -3,11 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import useDebounce from '../../utils/hooks/useDebounce';
+import userIcon from '../../assets/icons/bx-user-pin.svg';
 
 const Header = ({ user, onSetSearchResults, onSetSearchNearby }) => {
   const navigate = useNavigate();
   const [searchInput, setSearchInput] = useState('');
   const debouncedSearch = useDebounce(searchInput);
+  const [showSignOut, setShowSignOut] = useState(false);
 
   useEffect(() => {
     const handleSearch = async () => {
@@ -37,7 +39,7 @@ const Header = ({ user, onSetSearchResults, onSetSearchNearby }) => {
 
         onSetSearchResults(data);
       } catch (err) {
-        console.log({
+        console.error({
           message: 'Unable to search for results',
           error: err,
         });
@@ -46,6 +48,13 @@ const Header = ({ user, onSetSearchResults, onSetSearchNearby }) => {
 
     handleSearch();
   }, [debouncedSearch]);
+
+  // handle sign-out
+  const handleSignOut = () => {
+    sessionStorage.removeItem('token');
+    user = null;
+    navigate('/');
+  };
 
   return (
     <header className='header'>
@@ -86,7 +95,29 @@ const Header = ({ user, onSetSearchResults, onSetSearchNearby }) => {
             </button>
           </div>
         ) : (
-          <div className='header__user-profile'>@{user.username}</div>
+          <div className='header__user-profile'>
+            <p
+              className='header__user'
+              onClick={() => setShowSignOut(!showSignOut)}
+            >
+              <img
+                className='user-icon'
+                src={userIcon}
+                alt='User icon'
+              />
+              {user.username}{' '}
+            </p>
+
+            {showSignOut && (
+              <Link
+                to='/'
+                className='header__user__sign-out'
+                onClick={handleSignOut}
+              >
+                SIGN
+              </Link>
+            )}
+          </div>
         )}
       </div>
     </header>
