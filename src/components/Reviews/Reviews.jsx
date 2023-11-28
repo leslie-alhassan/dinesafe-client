@@ -4,9 +4,33 @@ import avatar from '../../assets/icons/bxs-user-circle.svg';
 import axios from 'axios';
 
 const Reviews = ({ user, establishmentId }) => {
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState(null);
   const [comment, setComment] = useState('');
   const [error, setError] = useState('');
+
+  console.log('comments', comments, 'comment', comment);
+
+  const fetchComments = async () => {
+    try {
+      const { data } = await axios.get(
+        `${
+          import.meta.env.VITE_SERVER_URL
+        }/api/comments/establishments/${establishmentId}`
+      );
+
+      // fetch comment usernames
+      if (!data) {
+        console.log('fetch got nothing');
+        return setComments(null);
+      }
+      console.log('fetch got something');
+      setComments(data);
+    } catch (err) {
+      console.log(
+        `Unable to fetch comments for establishment with ID ${establishmentId}`
+      );
+    }
+  };
 
   const handleSubmit = async (event) => {
     console.log('handling submit');
@@ -14,6 +38,7 @@ const Reviews = ({ user, establishmentId }) => {
     event.target.reset();
 
     if (!comment) {
+      console.log('empty comment section');
       return setError('Comment section cannot be empty');
     }
 
@@ -28,29 +53,20 @@ const Reviews = ({ user, establishmentId }) => {
       `${import.meta.env.VITE_SERVER_URL}/api/comments`,
       commentObj
     );
+
+    // refetch new comments
+    await fetchComments();
+
+    // if (establishmentId) {
+    console.log('curr comments:', comments);
+
+    console.log('comments after new fetch', comments);
+    // }
   };
 
   useEffect(() => {
-    const fetchComments = async () => {
-      try {
-        const { data } = await axios.get(
-          `${
-            import.meta.env.VITE_SERVER_URL
-          }/api/comments/establishments/${establishmentId}`
-        );
-
-        // fetch comment usernames
-        setComments(data);
-        console.log('setting comments', data);
-      } catch (err) {
-        console.log(
-          `Unable to fetch comments for establishment with ID ${establishmentId}`
-        );
-      }
-    };
-
     fetchComments();
-  }, [establishmentId, handleSubmit]);
+  }, [establishmentId]);
 
   return (
     <div className='reviews'>
@@ -106,10 +122,12 @@ const Reviews = ({ user, establishmentId }) => {
 
       <div className='comments'>
         {/* comment count */}
-        {comments.length > 0 && (
-          <p className='comments__count'>{comments.length} COMMENTS</p>
+        {comments && (
+          <p className='comments__count'>
+            {comments.length} {comments.length > 1 ? 'COMMENTS' : 'COMMENT'}
+          </p>
         )}
-        {comments.length !== 0 ? (
+        {comments ? (
           comments.map((comment) => {
             return (
               <article

@@ -40,7 +40,7 @@ const HomePage = () => {
           return isPointWithinRadius(
             { latitude: establishment.lat, longitude: establishment.lng },
             { latitude: center.lat, longitude: center.lng },
-            500
+            600
           );
         });
 

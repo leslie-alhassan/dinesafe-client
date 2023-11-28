@@ -145,27 +145,28 @@ const SearchResults = ({ searchResults, user }) => {
                     }
                   ></div>
                   <p className='details__date'>
-                    {lastInspection
-                      ? new Date(
-                          lastInspection[0]?.inspection_date
-                        ).toLocaleDateString(
-                          'en-CA',
-                          {
+                    {lastInspection[0]
+                      ? (new Date(
+                          lastInspection[0]['Inspection Date']
+                        ).toLocaleDateString('en-CA', {
+                          month: 'long',
+                          day: 'numeric',
+                          year: 'numeric',
+                        }) !== 'Invalid Date' &&
+                          new Date(
+                            lastInspection[0]['Inspection Date']
+                          ).toLocaleDateString('en-CA', {
                             month: 'long',
                             day: 'numeric',
                             year: 'numeric',
-                          } ||
-                            (lastInspection[0] &&
-                              new Date(
-                                lastInspection[0][
-                                  'Inspection Date'
-                                ].toLocaleDateString('en-CA', {
-                                  month: 'long',
-                                  day: 'numeric',
-                                  year: 'numeric',
-                                })
-                              ))
-                        )
+                          })) ||
+                        new Date(
+                          lastInspection[0].inspection_date
+                        ).toLocaleDateString('en-CA', {
+                          month: 'long',
+                          day: 'numeric',
+                          year: 'numeric',
+                        })
                       : 'No recent inspections'}
                   </p>
                   <p className='details__status'>
