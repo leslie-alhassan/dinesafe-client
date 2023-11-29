@@ -5,7 +5,7 @@ import axios from 'axios';
 import useDebounce from '../../utils/hooks/useDebounce';
 import userIcon from '../../assets/icons/bx-user-pin.svg';
 
-const Header = ({ user, onSetSearchResults, onSetSearchNearby }) => {
+const Header = ({ user, onSetSearchResults }) => {
   const navigate = useNavigate();
   const [searchInput, setSearchInput] = useState('');
   const debouncedSearch = useDebounce(searchInput);
@@ -13,19 +13,9 @@ const Header = ({ user, onSetSearchResults, onSetSearchNearby }) => {
 
   useEffect(() => {
     const handleSearch = async () => {
-      if (debouncedSearch.length === 0) {
+      if (searchInput.length === 0) {
         return;
       }
-
-      // handle search for nearby establishments
-      if (
-        debouncedSearch.toLowerCase() === 'near' ||
-        debouncedSearch.toLowerCase() === 'near me' ||
-        debouncedSearch.toLowerCase() === 'nearby'
-      ) {
-        onSetSearchNearby(true);
-      }
-      onSetSearchNearby(false);
 
       try {
         const search = debouncedSearch.split(' ').join('_');
