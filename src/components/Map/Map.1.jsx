@@ -1,8 +1,7 @@
 import React, { useMemo } from 'react';
-import './Map.scss';
 import { GoogleMap, Marker } from '@react-google-maps/api';
 
-const Map = ({ position }) => {
+export const Map = ({ position }) => {
   const options = useMemo(
     () => ({
       // mapId: 'b181cac70f27f5e6', // dark mode
@@ -25,5 +24,3 @@ const Map = ({ position }) => {
     </div>
   );
 };
-
-export default Map;
