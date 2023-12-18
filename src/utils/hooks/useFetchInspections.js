@@ -28,7 +28,6 @@ const useFetchInspections = async (establishmentId, establishmentName) => {
         };
 
         try {
-          console.log('posting details to DB');
           await axios.post(
             `${import.meta.env.VITE_SERVER_URL}/api/inspections/`,
             inspectionDetails
