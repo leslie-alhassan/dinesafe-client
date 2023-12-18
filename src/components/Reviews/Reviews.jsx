@@ -132,7 +132,7 @@ const Reviews = ({ user, establishmentId }) => {
                     }
                   >
                     {comment.user_id === user?.id
-                      ? 'me'
+                      ? 'You'
                       : `@${comment.username}`}
                   </p>
                   <p className='comments__comment'>{comment.comment}</p>
